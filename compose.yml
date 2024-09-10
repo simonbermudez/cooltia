@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: 3.3.4
+    container_name: cooltia
+    environment:
+      RAILS_ENV: production
+      RAILS_MASTER_KEY: be9604079ea7e4af19ac8989fb1f4521
+      POSTGRES_USER: cooltia
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: cooltia_production
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3000:3000"
+    volumes:
+      - .:/rails
+    depends_on:
+      - db
+    entrypoint: ["./bin/docker-entrypoint"]
+    command: ["./bin/rails", "server", "-b", "0.0.0.0"]
+
+  db:
+    image: postgres:15
+    container_name: cooltia-db
+    environment:
+      POSTGRES_USER: cooltia
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: cooltia_production
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
