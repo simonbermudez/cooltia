@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  imagen: MyString
+  descripcion: MyText
+  lugar: MyString
+  fecha: 2024-09-10
+  hora: 2024-09-10 20:06:49
+  fuente: MyString
+  letra_chica: MyText
+
+two:
+  nombre: MyString
+  imagen: MyString
+  descripcion: MyText
+  lugar: MyString
+  fecha: 2024-09-10
+  hora: 2024-09-10 20:06:49
+  fuente: MyString
+  letra_chica: MyText
